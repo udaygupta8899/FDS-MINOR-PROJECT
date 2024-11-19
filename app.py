@@ -18,7 +18,7 @@ if uploaded_file is not None:
 
     # Ensure necessary columns exist
     required_columns = ["How would you describe your personality?", "Movie Genre",
-                        "Music Taste", "What qualities do you value most in a partner?","Dietary Preference","What's your ideal first date","How do you feel about dating someone who smokes or drinks"]
+                        "Music Taste", "What qualities do you value most in a partner?","Dietary Preference","What's your ideal first date","How do you feel about dating someone who smokes or drinks?"]
     if all(col in dataset.columns for col in required_columns):
         
         # Step 2: Allow user to select two rows for compatibility scoring
