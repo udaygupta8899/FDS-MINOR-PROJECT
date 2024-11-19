@@ -68,15 +68,17 @@ if uploaded_file is not None:
         
         # Convert dataset into a binary classification (for demonstration)
         # Here we create a synthetic target variable (binary classification)
-        X = dataset[dataset.columns].values  # All columns as features
-        y = (np.random.rand(len(dataset)) > 0.5).astype(int)  # Random binary target for demonstration
-
+       # Ensure X and y are numpy arrays and are in the correct data type
+        X = dataset[dataset.columns].values.astype(np.float32)  # All columns as features
+        y = (np.random.rand(len(dataset)) > 0.5).astype(np.int32)  # Random binary target for demonstration
+        
         # Split dataset into training and testing
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
+        
         # Build and train the model
         model = build_model((X_train.shape[1],))
         model.fit(X_train, y_train, epochs=10, verbose=0)
+
 
         # Step 6: Evaluate the model
         loss, accuracy, precision, recall = model.evaluate(X_test, y_test, verbose=1)
